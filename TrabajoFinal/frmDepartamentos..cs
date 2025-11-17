@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TrabajoFinal
 {
-    public partial class frmPrincipal : Form
+    public partial class frmDepartamentos : Form
     {
-        public frmPrincipal()
+        public frmDepartamentos()
         {
             InitializeComponent();
         }
