@@ -14,12 +14,19 @@ namespace TrabajoFinal
     
     public partial class frmDepartamentos : Form
     {
+
+
         public frmDepartamentos()
         {
             InitializeComponent();
         }
 
         private void frmDepartamentos_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
         {
 
         }
