@@ -159,7 +159,10 @@
             this.Controls.Add(this.IbINombre);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.IbIID);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MinimizeBox = false;
             this.Name = "frmDepartamentos";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "frmDepartamentos";
             ((System.ComponentModel.ISupportInitialize)(this.dvgDepartamentos)).EndInit();
             this.ResumeLayout(false);

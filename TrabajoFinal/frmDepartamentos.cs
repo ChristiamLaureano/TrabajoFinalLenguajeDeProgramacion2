@@ -162,7 +162,7 @@ namespace TrabajoFinal
             {
                 using (StreamWriter sw = new StreamWriter(save.FileName))
                 {
-                    // Encabezados
+                  
                     sw.WriteLine("DepartamentoID,NombreDepartamento");
 
                     foreach (var dep in db.Departamentos)
