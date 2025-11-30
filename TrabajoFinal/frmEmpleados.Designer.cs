@@ -125,6 +125,7 @@
             this.txtSalario.Name = "txtSalario";
             this.txtSalario.Size = new System.Drawing.Size(166, 20);
             this.txtSalario.TabIndex = 10;
+            this.txtSalario.TextChanged += new System.EventHandler(this.txtSalario_TextChanged);
             // 
             // dtpFecha
             // 
@@ -206,9 +207,9 @@
             this.txtEmpleadoID.ForeColor = System.Drawing.Color.Ivory;
             this.txtEmpleadoID.Location = new System.Drawing.Point(26, 41);
             this.txtEmpleadoID.Name = "txtEmpleadoID";
+            this.txtEmpleadoID.ReadOnly = true;
             this.txtEmpleadoID.Size = new System.Drawing.Size(100, 20);
             this.txtEmpleadoID.TabIndex = 0;
-            this.txtEmpleadoID.Text = "ID ";
             // 
             // label1
             // 

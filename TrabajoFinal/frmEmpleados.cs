@@ -25,6 +25,7 @@ namespace TrabajoFinal
             CargarDepartamentos();
             CargarCargos();
             CargarEmpleados();
+
             cboEstado.Items.Add("Vigente");
             cboEstado.Items.Add("No Vigente");
         }
@@ -39,6 +40,7 @@ namespace TrabajoFinal
             cboDepartamento.DataSource = db.Departamentos.ToList();
             cboDepartamento.DisplayMember = "NombreDepartamento";
             cboDepartamento.ValueMember = "DepartamentoID";
+            cboDepartamento.SelectedIndex = -1;
         }
 
 
@@ -47,6 +49,7 @@ namespace TrabajoFinal
             cboCargo.DataSource = db.Cargos.ToList();
             cboCargo.DisplayMember = "NombreCargo";
             cboCargo.ValueMember = "CargoID";
+            cboCargo.SelectedIndex = -1;
         }
       
         private void CargarEmpleados()
@@ -70,8 +73,18 @@ namespace TrabajoFinal
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+          
+
             try
             {
+
+                if (cboDepartamento.SelectedValue == null || cboCargo.SelectedValue == null)
+                {
+                    MessageBox.Show("Seleccione un Departamento y un Cargo.");
+                    return;
+                }
+
+
                 Empleado emp = new Empleado();
 
                 emp.NombreEmpleado = txtNombre.Text;
@@ -213,6 +226,10 @@ namespace TrabajoFinal
             txtTiempo.Clear();
         }
 
+        private void txtSalario_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 
 }
