@@ -26,13 +26,24 @@ namespace TrabajoFinal
             CargarCargos();
             CargarEmpleados();
 
+            cboEstado.Items.Clear();
             cboEstado.Items.Add("Vigente");
             cboEstado.Items.Add("No Vigente");
         }
 
         private void CargarDepartamentos()
         {
-           
+            var datos = db.Departamentos.ToList();
+
+            var bs = new BindingSource();
+            bs.DataSource = datos;
+
+            cboDepartamento.DataSource = null;
+            cboDepartamento.DisplayMember = "NombreDepartamento";
+            cboDepartamento.ValueMember = "DepartamentoID";
+            cboDepartamento.DataSource = bs;
+
+            if (datos.Count > 0) cboDepartamento.SelectedIndex = 0;
         }
 
         private void CargarDeparmentos()
@@ -46,10 +57,17 @@ namespace TrabajoFinal
 
         private void CargarCargos()
         {
-            cboCargo.DataSource = db.Cargos.ToList();
+            var datos = db.Cargos.ToList();
+
+            var bs = new BindingSource();
+            bs.DataSource = datos;
+
+            cboCargo.DataSource = null;
             cboCargo.DisplayMember = "NombreCargo";
             cboCargo.ValueMember = "CargoID";
-            cboCargo.SelectedIndex = -1;
+            cboCargo.DataSource = bs;
+
+            if (datos.Count > 0) cboCargo.SelectedIndex = 0;
         }
       
         private void CargarEmpleados()
@@ -73,17 +91,35 @@ namespace TrabajoFinal
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-          
+
 
             try
             {
-
                 if (cboDepartamento.SelectedValue == null || cboCargo.SelectedValue == null)
                 {
-                    MessageBox.Show("Seleccione un Departamento y un Cargo.");
+                    MessageBox.Show("Seleccione Departamento y Cargo");
                     return;
                 }
 
+                if (!decimal.TryParse(txtSalario.Text, out decimal salario))
+                {
+                    MessageBox.Show("Ingrese un salario válido");
+                    return;
+                }
+
+                DialogResult r = MessageBox.Show(
+                 "¿Desea guardar este empleado con estos descuentos?\n\n" +
+                 $"AFP: {txtAFP.Text}\n" +
+                 $"ARS: {txtARS.Text}\n" +
+                 $"ISR: {txtISR.Text}\n" +
+                 $"Neto: {txtNeto.Text}",
+                 "Confirmación",
+                 MessageBoxButtons.YesNo,
+                 MessageBoxIcon.Question
+                );
+
+                if (r == DialogResult.No)
+                    return;
 
                 Empleado emp = new Empleado();
 
@@ -91,23 +127,21 @@ namespace TrabajoFinal
                 emp.DepartamentoID = (int)cboDepartamento.SelectedValue;
                 emp.CargoID = (int)cboCargo.SelectedValue;
                 emp.FechaInicio = dtpFecha.Value;
-                emp.Salario = Convert.ToDecimal(txtSalario.Text);
-                emp.Estado = cboEstado.Text == "vigente";
-
+                emp.Salario = salario;
+                emp.Estado = cboEstado.Text == "Vigente";
 
                 CalcularNomina(emp);
 
                 db.Empleados.Add(emp);
                 db.SaveChanges();
 
-                MessageBox.Show("Empleado guardado Correctamente");
+                MessageBox.Show("Empleado guardado correctamente");
                 CargarEmpleados();
                 Limpiar();
-
             }
-            catch(Exception ex)
-            { 
-                MessageBox.Show("Error al Guardar" + ex.Message);
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar: " + ex.Message);
             }
 
         }
@@ -228,7 +262,38 @@ namespace TrabajoFinal
 
         private void txtSalario_TextChanged(object sender, EventArgs e)
         {
-            
+            if (decimal.TryParse(txtSalario.Text, out decimal salario))
+            {
+                CalcularVistaNomina(salario);
+            }
+            else
+            {
+
+                txtAFP.Clear();
+                txtARS.Clear();
+                txtISR.Clear();
+                txtNeto.Clear();
+                txtTiempo.Clear();
+            }
+        }
+
+        private void CalcularVistaNomina(decimal salario)
+        {
+            decimal afp = salario * 0.0287M;
+            decimal ars = salario * 0.0304M;
+            decimal isr = CalcularISR(salario);
+
+            txtAFP.Text = afp.ToString("N2");
+            txtARS.Text = ars.ToString("N2");
+            txtISR.Text = isr.ToString("N2");
+            txtNeto.Text = (salario - afp - ars - isr).ToString("N2");
+
+            txtTiempo.Text = CalcularTiempo(dtpFecha.Value);
+        }
+
+        private void cboDepartamento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 
