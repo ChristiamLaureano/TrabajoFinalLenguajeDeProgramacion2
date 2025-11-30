@@ -68,7 +68,7 @@ namespace TrabajoFinal
 
             catch (Exception ex)
             {
-                MessageBox.Show("Error al agregar:\n" + ex.Message);
+                MessageBox.Show("Error al agregar:" + ex.Message);
             }
 
 
@@ -99,7 +99,7 @@ namespace TrabajoFinal
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al actualizar:\n" + ex.Message);
+                MessageBox.Show("Error al actualizar:" + ex.Message);
             }
         }
 

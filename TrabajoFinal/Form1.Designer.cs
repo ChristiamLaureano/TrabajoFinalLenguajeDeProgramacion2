@@ -36,6 +36,9 @@
             this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nominaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prestacionesLaboralesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reclutamientoYSeleccionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +59,10 @@
             // 
             // gestionToolStripMenuItem
             // 
+            this.gestionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nominaToolStripMenuItem,
+            this.prestacionesLaboralesToolStripMenuItem,
+            this.reclutamientoYSeleccionToolStripMenuItem});
             this.gestionToolStripMenuItem.Name = "gestionToolStripMenuItem";
             this.gestionToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.gestionToolStripMenuItem.Text = "Gestion";
@@ -98,6 +105,24 @@
             this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
             // 
+            // nominaToolStripMenuItem
+            // 
+            this.nominaToolStripMenuItem.Name = "nominaToolStripMenuItem";
+            this.nominaToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.nominaToolStripMenuItem.Text = "Nomina ";
+            // 
+            // prestacionesLaboralesToolStripMenuItem
+            // 
+            this.prestacionesLaboralesToolStripMenuItem.Name = "prestacionesLaboralesToolStripMenuItem";
+            this.prestacionesLaboralesToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.prestacionesLaboralesToolStripMenuItem.Text = "Prestaciones Laborales";
+            // 
+            // reclutamientoYSeleccionToolStripMenuItem
+            // 
+            this.reclutamientoYSeleccionToolStripMenuItem.Name = "reclutamientoYSeleccionToolStripMenuItem";
+            this.reclutamientoYSeleccionToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.reclutamientoYSeleccionToolStripMenuItem.Text = "Reclutamiento y Seleccion";
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -126,6 +151,9 @@
         private System.Windows.Forms.ToolStripMenuItem empleadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nominaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem prestacionesLaboralesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reclutamientoYSeleccionToolStripMenuItem;
     }
 }
 
