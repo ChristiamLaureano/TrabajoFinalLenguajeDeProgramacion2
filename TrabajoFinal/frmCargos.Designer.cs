@@ -50,6 +50,7 @@
             this.btnExportarCSV.TabIndex = 21;
             this.btnExportarCSV.Text = "Exportar CVS";
             this.btnExportarCSV.UseVisualStyleBackColor = true;
+            this.btnExportarCSV.Click += new System.EventHandler(this.btnExportarCSV_Click);
             // 
             // btnCargar
             // 
@@ -59,6 +60,7 @@
             this.btnCargar.TabIndex = 20;
             this.btnCargar.Text = "Cargar";
             this.btnCargar.UseVisualStyleBackColor = true;
+            this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
             // 
             // dgvCargos
             // 
@@ -67,6 +69,7 @@
             this.dgvCargos.Name = "dgvCargos";
             this.dgvCargos.Size = new System.Drawing.Size(409, 150);
             this.dgvCargos.TabIndex = 19;
+            this.dgvCargos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCargos_CellContentClick);
             // 
             // btnLimpiar
             // 
@@ -76,6 +79,7 @@
             this.btnLimpiar.TabIndex = 18;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnActualizar
             // 
@@ -85,6 +89,7 @@
             this.btnActualizar.TabIndex = 17;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnEliminar
             // 
@@ -94,6 +99,7 @@
             this.btnEliminar.TabIndex = 16;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnAgregar
             // 
@@ -103,6 +109,7 @@
             this.btnAgregar.TabIndex = 15;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // txtNombreCargo
             // 
