@@ -28,12 +28,151 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.btnExportarCSV = new System.Windows.Forms.Button();
+            this.btnCargar = new System.Windows.Forms.Button();
+            this.dgvCargos = new System.Windows.Forms.DataGridView();
+            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.txtNombreCargo = new System.Windows.Forms.TextBox();
+            this.IbINombre = new System.Windows.Forms.Label();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.IbIID = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCargos)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // btnExportarCSV
+            // 
+            this.btnExportarCSV.Location = new System.Drawing.Point(237, 211);
+            this.btnExportarCSV.Name = "btnExportarCSV";
+            this.btnExportarCSV.Size = new System.Drawing.Size(188, 42);
+            this.btnExportarCSV.TabIndex = 21;
+            this.btnExportarCSV.Text = "Exportar CVS";
+            this.btnExportarCSV.UseVisualStyleBackColor = true;
+            // 
+            // btnCargar
+            // 
+            this.btnCargar.Location = new System.Drawing.Point(16, 211);
+            this.btnCargar.Name = "btnCargar";
+            this.btnCargar.Size = new System.Drawing.Size(191, 42);
+            this.btnCargar.TabIndex = 20;
+            this.btnCargar.Text = "Cargar";
+            this.btnCargar.UseVisualStyleBackColor = true;
+            // 
+            // dgvCargos
+            // 
+            this.dgvCargos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCargos.Location = new System.Drawing.Point(16, 269);
+            this.dgvCargos.Name = "dgvCargos";
+            this.dgvCargos.Size = new System.Drawing.Size(409, 150);
+            this.dgvCargos.TabIndex = 19;
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Location = new System.Drawing.Point(350, 161);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(75, 44);
+            this.btnLimpiar.TabIndex = 18;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Location = new System.Drawing.Point(132, 161);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(75, 44);
+            this.btnActualizar.TabIndex = 17;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(237, 161);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 44);
+            this.btnEliminar.TabIndex = 16;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Location = new System.Drawing.Point(16, 161);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(75, 44);
+            this.btnAgregar.TabIndex = 15;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            // 
+            // txtNombreCargo
+            // 
+            this.txtNombreCargo.Location = new System.Drawing.Point(269, 69);
+            this.txtNombreCargo.Name = "txtNombreCargo";
+            this.txtNombreCargo.Size = new System.Drawing.Size(100, 20);
+            this.txtNombreCargo.TabIndex = 14;
+            // 
+            // IbINombre
+            // 
+            this.IbINombre.AutoSize = true;
+            this.IbINombre.Location = new System.Drawing.Point(266, 36);
+            this.IbINombre.Name = "IbINombre";
+            this.IbINombre.Size = new System.Drawing.Size(47, 13);
+            this.IbINombre.TabIndex = 13;
+            this.IbINombre.Text = "Nombre:";
+            // 
+            // txtID
+            // 
+            this.txtID.Location = new System.Drawing.Point(71, 69);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(100, 20);
+            this.txtID.TabIndex = 12;
+            // 
+            // IbIID
+            // 
+            this.IbIID.AutoSize = true;
+            this.IbIID.Location = new System.Drawing.Point(70, 36);
+            this.IbIID.Name = "IbIID";
+            this.IbIID.Size = new System.Drawing.Size(21, 13);
+            this.IbIID.TabIndex = 11;
+            this.IbIID.Text = "ID:";
+            // 
+            // frmCargos
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(433, 426);
+            this.Controls.Add(this.btnExportarCSV);
+            this.Controls.Add(this.btnCargar);
+            this.Controls.Add(this.dgvCargos);
+            this.Controls.Add(this.btnLimpiar);
+            this.Controls.Add(this.btnActualizar);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.txtNombreCargo);
+            this.Controls.Add(this.IbINombre);
+            this.Controls.Add(this.txtID);
+            this.Controls.Add(this.IbIID);
+            this.Name = "frmCargos";
             this.Text = "frmCargos";
+            this.Load += new System.EventHandler(this.frmCargos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCargos)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnExportarCSV;
+        private System.Windows.Forms.Button btnCargar;
+        private System.Windows.Forms.DataGridView dgvCargos;
+        private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.TextBox txtNombreCargo;
+        private System.Windows.Forms.Label IbINombre;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.Label IbIID;
     }
 }

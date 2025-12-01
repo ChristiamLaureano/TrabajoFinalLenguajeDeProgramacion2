@@ -12,9 +12,17 @@ namespace TrabajoFinal
 {
     public partial class frmCargos : Form
     {
+
+        GestionDePersonalEntities 
+
         public frmCargos()
         {
             InitializeComponent();
+        }
+
+        private void frmCargos_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

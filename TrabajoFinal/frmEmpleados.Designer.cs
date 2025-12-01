@@ -209,9 +209,9 @@
             this.txtEmpleadoID.ForeColor = System.Drawing.Color.Ivory;
             this.txtEmpleadoID.Location = new System.Drawing.Point(26, 41);
             this.txtEmpleadoID.Name = "txtEmpleadoID";
-            this.txtEmpleadoID.ReadOnly = true;
             this.txtEmpleadoID.Size = new System.Drawing.Size(100, 20);
             this.txtEmpleadoID.TabIndex = 0;
+            this.txtEmpleadoID.TextChanged += new System.EventHandler(this.txtEmpleadoID_TextChanged);
             // 
             // label1
             // 
@@ -236,7 +236,7 @@
             this.groupCalculos.Controls.Add(this.txtNeto);
             this.groupCalculos.Controls.Add(this.txtAFP);
             this.groupCalculos.Controls.Add(this.label9);
-            this.groupCalculos.Location = new System.Drawing.Point(521, 67);
+            this.groupCalculos.Location = new System.Drawing.Point(647, 67);
             this.groupCalculos.Name = "groupCalculos";
             this.groupCalculos.Size = new System.Drawing.Size(346, 230);
             this.groupCalculos.TabIndex = 2;
@@ -330,7 +330,7 @@
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(396, 303);
+            this.btnActualizar.Location = new System.Drawing.Point(526, 186);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(100, 38);
             this.btnActualizar.TabIndex = 3;
@@ -340,16 +340,17 @@
             // 
             // btnNuevo
             // 
-            this.btnNuevo.Location = new System.Drawing.Point(41, 303);
+            this.btnNuevo.Location = new System.Drawing.Point(526, 76);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(88, 38);
+            this.btnNuevo.Size = new System.Drawing.Size(98, 38);
             this.btnNuevo.TabIndex = 4;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(238, 303);
+            this.btnGuardar.Location = new System.Drawing.Point(524, 129);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(102, 38);
             this.btnGuardar.TabIndex = 5;
@@ -359,9 +360,9 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(521, 303);
+            this.btnEliminar.Location = new System.Drawing.Point(526, 249);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(132, 38);
+            this.btnEliminar.Size = new System.Drawing.Size(100, 38);
             this.btnEliminar.TabIndex = 6;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
@@ -369,31 +370,33 @@
             // 
             // btnExportar
             // 
-            this.btnExportar.Location = new System.Drawing.Point(735, 303);
+            this.btnExportar.Location = new System.Drawing.Point(861, 561);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(132, 38);
             this.btnExportar.TabIndex = 7;
             this.btnExportar.Text = "Exportar CSV";
             this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // btnCargar
             // 
-            this.btnCargar.Location = new System.Drawing.Point(12, 347);
+            this.btnCargar.Location = new System.Drawing.Point(12, 303);
             this.btnCargar.Name = "btnCargar";
-            this.btnCargar.Size = new System.Drawing.Size(855, 38);
+            this.btnCargar.Size = new System.Drawing.Size(981, 38);
             this.btnCargar.TabIndex = 8;
             this.btnCargar.Text = "Cargar Datos";
             this.btnCargar.UseVisualStyleBackColor = true;
+            this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
             // 
             // dgvEmpleados
             // 
             this.dgvEmpleados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmpleados.Location = new System.Drawing.Point(12, 391);
+            this.dgvEmpleados.Location = new System.Drawing.Point(12, 347);
             this.dgvEmpleados.Name = "dgvEmpleados";
             this.dgvEmpleados.ReadOnly = true;
             this.dgvEmpleados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEmpleados.Size = new System.Drawing.Size(855, 208);
+            this.dgvEmpleados.Size = new System.Drawing.Size(981, 208);
             this.dgvEmpleados.TabIndex = 9;
             this.dgvEmpleados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmpleados_CellContentClick);
             // 
@@ -401,7 +404,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(872, 611);
+            this.ClientSize = new System.Drawing.Size(1005, 611);
             this.Controls.Add(this.dgvEmpleados);
             this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.btnExportar);

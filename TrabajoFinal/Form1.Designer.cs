@@ -31,14 +31,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.gestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nominaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prestacionesLaboralesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reclutamientoYSeleccionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.departamenoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nominaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.prestacionesLaboralesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reclutamientoYSeleccionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportarListaDeEmpleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportarListaDeDepartamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportarCargosDeLosEmpleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportarNominaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,6 +71,24 @@
             this.gestionToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.gestionToolStripMenuItem.Text = "Gestion";
             // 
+            // nominaToolStripMenuItem
+            // 
+            this.nominaToolStripMenuItem.Name = "nominaToolStripMenuItem";
+            this.nominaToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.nominaToolStripMenuItem.Text = "Nomina ";
+            // 
+            // prestacionesLaboralesToolStripMenuItem
+            // 
+            this.prestacionesLaboralesToolStripMenuItem.Name = "prestacionesLaboralesToolStripMenuItem";
+            this.prestacionesLaboralesToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.prestacionesLaboralesToolStripMenuItem.Text = "Prestaciones Laborales";
+            // 
+            // reclutamientoYSeleccionToolStripMenuItem
+            // 
+            this.reclutamientoYSeleccionToolStripMenuItem.Name = "reclutamientoYSeleccionToolStripMenuItem";
+            this.reclutamientoYSeleccionToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.reclutamientoYSeleccionToolStripMenuItem.Text = "Reclutamiento y Seleccion";
+            // 
             // departamenoToolStripMenuItem
             // 
             this.departamenoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("departamenoToolStripMenuItem.Image")));
@@ -93,6 +115,11 @@
             // 
             // exportarToolStripMenuItem
             // 
+            this.exportarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportarListaDeEmpleadosToolStripMenuItem,
+            this.exportarListaDeDepartamentosToolStripMenuItem,
+            this.exportarCargosDeLosEmpleadosToolStripMenuItem,
+            this.exportarNominaToolStripMenuItem});
             this.exportarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exportarToolStripMenuItem.Image")));
             this.exportarToolStripMenuItem.Name = "exportarToolStripMenuItem";
             this.exportarToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
@@ -105,23 +132,29 @@
             this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
             // 
-            // nominaToolStripMenuItem
+            // exportarListaDeEmpleadosToolStripMenuItem
             // 
-            this.nominaToolStripMenuItem.Name = "nominaToolStripMenuItem";
-            this.nominaToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.nominaToolStripMenuItem.Text = "Nomina ";
+            this.exportarListaDeEmpleadosToolStripMenuItem.Name = "exportarListaDeEmpleadosToolStripMenuItem";
+            this.exportarListaDeEmpleadosToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.exportarListaDeEmpleadosToolStripMenuItem.Text = "Exportar Lista de Empleados";
             // 
-            // prestacionesLaboralesToolStripMenuItem
+            // exportarListaDeDepartamentosToolStripMenuItem
             // 
-            this.prestacionesLaboralesToolStripMenuItem.Name = "prestacionesLaboralesToolStripMenuItem";
-            this.prestacionesLaboralesToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.prestacionesLaboralesToolStripMenuItem.Text = "Prestaciones Laborales";
+            this.exportarListaDeDepartamentosToolStripMenuItem.Name = "exportarListaDeDepartamentosToolStripMenuItem";
+            this.exportarListaDeDepartamentosToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
+            this.exportarListaDeDepartamentosToolStripMenuItem.Text = "Exportar Lista de Departamentos";
             // 
-            // reclutamientoYSeleccionToolStripMenuItem
+            // exportarCargosDeLosEmpleadosToolStripMenuItem
             // 
-            this.reclutamientoYSeleccionToolStripMenuItem.Name = "reclutamientoYSeleccionToolStripMenuItem";
-            this.reclutamientoYSeleccionToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.reclutamientoYSeleccionToolStripMenuItem.Text = "Reclutamiento y Seleccion";
+            this.exportarCargosDeLosEmpleadosToolStripMenuItem.Name = "exportarCargosDeLosEmpleadosToolStripMenuItem";
+            this.exportarCargosDeLosEmpleadosToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
+            this.exportarCargosDeLosEmpleadosToolStripMenuItem.Text = "Exportar Cargos de los Empleados";
+            // 
+            // exportarNominaToolStripMenuItem
+            // 
+            this.exportarNominaToolStripMenuItem.Name = "exportarNominaToolStripMenuItem";
+            this.exportarNominaToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
+            this.exportarNominaToolStripMenuItem.Text = "Exportar Nomina";
             // 
             // FrmPrincipal
             // 
@@ -154,6 +187,10 @@
         private System.Windows.Forms.ToolStripMenuItem nominaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem prestacionesLaboralesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reclutamientoYSeleccionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportarListaDeEmpleadosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportarListaDeDepartamentosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportarCargosDeLosEmpleadosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportarNominaToolStripMenuItem;
     }
 }
 

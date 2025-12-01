@@ -12,12 +12,20 @@ using System.Windows.Forms;
 namespace TrabajoFinal
 {
     public partial class frmEmpleados : Form
+
     {
+
+
+
         GestionDePersonalEntities db = new GestionDePersonalEntities();
 
         public frmEmpleados()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Dock = DockStyle.None;
         }
 
         private void frmEmpleados_Load(object sender, EventArgs e)
@@ -191,61 +199,89 @@ namespace TrabajoFinal
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtEmpleadoID.Text))
+            {
+                MessageBox.Show("Seleccione un registro primero");
+                return;
+            }
+
             try
             {
-                int id = int.Parse(txtEmpleadoID.Text);
+                int id = Convert.ToInt32(txtEmpleadoID.Text);
                 var emp = db.Empleados.Find(id);
+
+                if (emp == null)
+                {
+                    MessageBox.Show("Empleado no encontrado");
+                    return;
+                }
 
                 emp.NombreEmpleado = txtNombre.Text;
                 emp.DepartamentoID = (int)cboDepartamento.SelectedValue;
                 emp.CargoID = (int)cboCargo.SelectedValue;
                 emp.FechaInicio = dtpFecha.Value;
                 emp.Salario = Convert.ToDecimal(txtSalario.Text);
-                emp.Estado = cboEstado.Text == "Vigente";
+                emp.Estado = cboEstado.Text == "Activo" || cboEstado.Text == "Vigente";
 
                 CalcularNomina(emp);
                 db.SaveChanges();
 
-                MessageBox.Show("Empleado actulizado");
+                MessageBox.Show("Registro actualizado correctamente");
                 CargarEmpleados();
                 Limpiar();
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al actualizar" + ex.Message);
+                MessageBox.Show("Error al actualizar: " + ex.Message);
             }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtEmpleadoID.Text))
+            {
+                MessageBox.Show("Seleccione un registro");
+                return;
+            }
+
+            DialogResult r = MessageBox.Show("¿Eliminar este empleado?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (r == DialogResult.No) return;
+
             try
             {
-                int id = int.Parse(txtEmpleadoID.Text);
+                int id = Convert.ToInt32(txtEmpleadoID.Text);
                 var emp = db.Empleados.Find(id);
-                db.Empleados.Remove(emp);
-                db.SaveChanges();
-                MessageBox.Show("Empleado eliminado");
-                CargarEmpleados();
-                Limpiar();
+
+                if (emp != null)
+                {
+                    db.Empleados.Remove(emp);
+                    db.SaveChanges();
+
+                    MessageBox.Show("Empleado eliminado");
+                    CargarEmpleados();
+                    Limpiar();
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al eliminar:" + ex.Message);
+                MessageBox.Show("Error al eliminar: " + ex.Message);
             }
         }
 
         private void dgvEmpleados_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow fila = dgvEmpleados.CurrentRow;
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow fila = dgvEmpleados.Rows[e.RowIndex];
 
-            txtEmpleadoID.Text = fila.Cells["EmpleadoID"].Value.ToString();
-            txtNombre.Text = fila.Cells["NombreEmpleado"].Value.ToString();
-            cboDepartamento.Text = fila.Cells["NombreDepartamento"].Value.ToString();
-            cboCargo.Text = fila.Cells["NombreCargo"].Value.ToString();
-            dtpFecha.Value = Convert.ToDateTime(fila.Cells["FechaInicio"].Value);
-            txtSalario.Text = fila.Cells["Salario"].Value.ToString();
-            cboEstado.Text = fila.Cells["Estado"].Value.ToString();
+                txtEmpleadoID.Text = fila.Cells["EmpleadoID"].Value.ToString();
+                txtNombre.Text = fila.Cells["NombreEmpleado"].Value.ToString();
+                cboDepartamento.Text = fila.Cells["Departamento"].Value.ToString();
+                cboCargo.Text = fila.Cells["Cargo"].Value.ToString();
+                dtpFecha.Value = Convert.ToDateTime(fila.Cells["FechaInicio"].Value);
+                txtSalario.Text = fila.Cells["Salario"].Value.ToString();
+                cboEstado.Text = fila.Cells["Estado"].Value.ToString();
+            }
         }
 
         private void Limpiar()
@@ -294,6 +330,63 @@ namespace TrabajoFinal
         private void cboDepartamento_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Archivo CSV (*.csv)|*.csv";
+            sfd.Title = "Guardar archivo CSV";
+            sfd.FileName = "Empleados.csv";
+
+            if (sfd.ShowDialog() != DialogResult.OK)
+                return;
+
+            StringBuilder contenido = new StringBuilder();
+
+            // Encabezados
+            for (int i = 0; i < dgvEmpleados.Columns.Count; i++)
+            {
+                contenido.Append(dgvEmpleados.Columns[i].HeaderText);
+                if (i < dgvEmpleados.Columns.Count - 1)
+                    contenido.Append(",");
+            }
+            contenido.AppendLine();
+
+            // Filas
+            foreach (DataGridViewRow fila in dgvEmpleados.Rows)
+            {
+                if (!fila.IsNewRow)
+                {
+                    for (int i = 0; i < dgvEmpleados.Columns.Count; i++)
+                    {
+                        contenido.Append(fila.Cells[i].Value?.ToString());
+                        if (i < dgvEmpleados.Columns.Count - 1)
+                            contenido.Append(",");
+                    }
+                    contenido.AppendLine();
+                }
+            }
+
+           
+            System.IO.File.WriteAllText(sfd.FileName, contenido.ToString(), Encoding.UTF8);
+
+            MessageBox.Show("Datos exportados correctamente", "Exportación CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnCargar_Click(object sender, EventArgs e)
+        {
+           CargarEmpleados();
+        }
+
+        private void txtEmpleadoID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            Limpiar();
         }
     }
 
