@@ -37,12 +37,7 @@
             this.departamenoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportarListaDeEmpleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportarListaDeDepartamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportarCargosDeLosEmpleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportarNominaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +48,6 @@
             this.departamenoToolStripMenuItem,
             this.cargosToolStripMenuItem,
             this.empleadosToolStripMenuItem,
-            this.exportarToolStripMenuItem,
             this.ayudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -113,48 +107,13 @@
             this.empleadosToolStripMenuItem.Text = "Empleados";
             this.empleadosToolStripMenuItem.Click += new System.EventHandler(this.empleadosToolStripMenuItem_Click);
             // 
-            // exportarToolStripMenuItem
-            // 
-            this.exportarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exportarListaDeEmpleadosToolStripMenuItem,
-            this.exportarListaDeDepartamentosToolStripMenuItem,
-            this.exportarCargosDeLosEmpleadosToolStripMenuItem,
-            this.exportarNominaToolStripMenuItem});
-            this.exportarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exportarToolStripMenuItem.Image")));
-            this.exportarToolStripMenuItem.Name = "exportarToolStripMenuItem";
-            this.exportarToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
-            this.exportarToolStripMenuItem.Text = "Exportar";
-            // 
             // ayudaToolStripMenuItem
             // 
             this.ayudaToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("ayudaToolStripMenuItem.Image")));
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
             this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
-            // 
-            // exportarListaDeEmpleadosToolStripMenuItem
-            // 
-            this.exportarListaDeEmpleadosToolStripMenuItem.Name = "exportarListaDeEmpleadosToolStripMenuItem";
-            this.exportarListaDeEmpleadosToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
-            this.exportarListaDeEmpleadosToolStripMenuItem.Text = "Exportar Lista de Empleados";
-            // 
-            // exportarListaDeDepartamentosToolStripMenuItem
-            // 
-            this.exportarListaDeDepartamentosToolStripMenuItem.Name = "exportarListaDeDepartamentosToolStripMenuItem";
-            this.exportarListaDeDepartamentosToolStripMenuItem.Size = new System.Drawing.Size(244, 22);
-            this.exportarListaDeDepartamentosToolStripMenuItem.Text = "Exportar Lista de Departamentos";
-            // 
-            // exportarCargosDeLosEmpleadosToolStripMenuItem
-            // 
-            this.exportarCargosDeLosEmpleadosToolStripMenuItem.Name = "exportarCargosDeLosEmpleadosToolStripMenuItem";
-            this.exportarCargosDeLosEmpleadosToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
-            this.exportarCargosDeLosEmpleadosToolStripMenuItem.Text = "Exportar Cargos de los Empleados";
-            // 
-            // exportarNominaToolStripMenuItem
-            // 
-            this.exportarNominaToolStripMenuItem.Name = "exportarNominaToolStripMenuItem";
-            this.exportarNominaToolStripMenuItem.Size = new System.Drawing.Size(252, 22);
-            this.exportarNominaToolStripMenuItem.Text = "Exportar Nomina";
+            this.ayudaToolStripMenuItem.Click += new System.EventHandler(this.ayudaToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -167,7 +126,6 @@
             this.Name = "FrmPrincipal";
             this.Text = "Recursos Humanos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -182,15 +140,10 @@
         private System.Windows.Forms.ToolStripMenuItem departamenoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cargosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem empleadosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nominaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem prestacionesLaboralesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reclutamientoYSeleccionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportarListaDeEmpleadosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportarListaDeDepartamentosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportarCargosDeLosEmpleadosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportarNominaToolStripMenuItem;
     }
 }
 

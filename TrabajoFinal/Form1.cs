@@ -57,5 +57,24 @@ namespace TrabajoFinal
         {
             AbrirFormulario(new frmEmpleados());
         }
+
+        private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+        "Sistema de Gestión de Recursos Humanos\n" +
+        "Versión 1.0\n\n" +
+        "Proyecto Final Lenguaje de Programación II\n" +
+        "Desarrollado por Christiam\n\n" +
+        "Funciones:\n" +
+        "- Gestión de empleados\n" +
+        "- Nómina\n" +
+        "- Exportación CSV\n" +
+        "- Control de departamentos\n" +
+        "- Control de cargos\n",
+        "Acerca de",
+        MessageBoxButtons.OK,
+        MessageBoxIcon.Information
+        );
+        }
     }
 }
