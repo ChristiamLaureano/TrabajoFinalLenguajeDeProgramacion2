@@ -28,6 +28,5 @@ namespace TrabajoFinal
         public virtual DbSet<Cargo> Cargos { get; set; }
         public virtual DbSet<Departamento> Departamentos { get; set; }
         public virtual DbSet<Empleado> Empleados { get; set; }
-        public object Vista_EmpleadosCompleto { get; internal set; }
     }
 }

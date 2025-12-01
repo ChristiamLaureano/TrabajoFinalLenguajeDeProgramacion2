@@ -21,11 +21,6 @@ namespace TrabajoFinal
         public System.DateTime FechaInicio { get; set; }
         public decimal Salario { get; set; }
         public bool Estado { get; set; }
-        public Nullable<decimal> AFP { get; set; }
-        public Nullable<decimal> ARS { get; set; }
-        public Nullable<decimal> ISR { get; set; }
-        public Nullable<decimal> SalarioNeto { get; set; }
-        public string TiempoLaborado { get; set; }
     
         public virtual Cargo Cargo { get; set; }
         public virtual Departamento Departamento { get; set; }
