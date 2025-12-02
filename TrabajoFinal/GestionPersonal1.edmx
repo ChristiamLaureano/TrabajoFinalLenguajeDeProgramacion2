@@ -102,6 +102,7 @@
           <Property Name="Estado" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Cargo" Relationship="Self.FK_Empleado_Cargo" FromRole="Empleados" ToRole="Cargos" />
           <NavigationProperty Name="Departamento" Relationship="Self.FK_Empleado_Departamento" FromRole="Empleados" ToRole="Departamentos" />
+          <Property Name="nada" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="FK_Empleado_Cargo">
           <End Role="Cargos" Type="Self.Cargo" Multiplicity="1" />

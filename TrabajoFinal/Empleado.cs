@@ -21,6 +21,7 @@ namespace TrabajoFinal
         public System.DateTime FechaInicio { get; set; }
         public decimal Salario { get; set; }
         public bool Estado { get; set; }
+        public string nada { get; set; }
     
         public virtual Cargo Cargo { get; set; }
         public virtual Departamento Departamento { get; set; }

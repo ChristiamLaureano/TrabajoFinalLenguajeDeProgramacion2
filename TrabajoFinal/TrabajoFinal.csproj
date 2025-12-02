@@ -59,13 +59,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cargo.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>GestionPersonal1.tt</DependentUpon>
     </Compile>
     <Compile Include="Departamento.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>GestionPersonal1.tt</DependentUpon>
     </Compile>
     <Compile Include="Empleado.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>GestionPersonal1.tt</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
