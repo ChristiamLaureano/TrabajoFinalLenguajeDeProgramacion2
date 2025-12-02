@@ -17,7 +17,7 @@ namespace TrabajoFinal
 
 
 
-        GestionDePersonalEntities db = new GestionDePersonalEntities();
+        GestionDePersonalEntities2 db = new GestionDePersonalEntities2();
 
         public frmEmpleados()
         {
@@ -387,6 +387,11 @@ namespace TrabajoFinal
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             Limpiar();
+        }
+
+        private void groupDatos_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 

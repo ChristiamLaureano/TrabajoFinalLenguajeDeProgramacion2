@@ -89,6 +89,7 @@
             this.groupDatos.TabIndex = 0;
             this.groupDatos.TabStop = false;
             this.groupDatos.Text = "Datos del Empleado";
+            this.groupDatos.Enter += new System.EventHandler(this.groupDatos_Enter);
             // 
             // label8
             // 

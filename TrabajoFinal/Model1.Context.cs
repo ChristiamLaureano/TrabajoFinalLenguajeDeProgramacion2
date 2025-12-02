@@ -13,10 +13,10 @@ namespace TrabajoFinal
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class GestionDePersonalEntities1 : DbContext
+    public partial class GestionDePersonalEntities2 : DbContext
     {
-        public GestionDePersonalEntities1()
-            : base("name=GestionDePersonalEntities1")
+        public GestionDePersonalEntities2()
+            : base("name=GestionDePersonalEntities2")
         {
         }
     
@@ -28,6 +28,9 @@ namespace TrabajoFinal
         public virtual DbSet<Cargo> Cargos { get; set; }
         public virtual DbSet<Departamento> Departamentos { get; set; }
         public virtual DbSet<Empleado> Empleados { get; set; }
+        public virtual DbSet<Nomina> Nominas { get; set; }
         public virtual DbSet<ParametrosSistema> ParametrosSistemas { get; set; }
+        public virtual DbSet<PrestacionesLaborale> PrestacionesLaborales { get; set; }
+        public virtual DbSet<Reclutamiento> Reclutamientoes { get; set; }
     }
 }

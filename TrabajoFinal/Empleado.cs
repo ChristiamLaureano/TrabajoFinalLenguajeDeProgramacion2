@@ -14,6 +14,13 @@ namespace TrabajoFinal
     
     public partial class Empleado
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Empleado()
+        {
+            this.PrestacionesLaborales = new HashSet<PrestacionesLaborale>();
+            this.Nominas = new HashSet<Nomina>();
+        }
+    
         public int EmpleadoID { get; set; }
         public string NombreEmpleado { get; set; }
         public int DepartamentoID { get; set; }
@@ -21,9 +28,17 @@ namespace TrabajoFinal
         public System.DateTime FechaInicio { get; set; }
         public decimal Salario { get; set; }
         public bool Estado { get; set; }
-        public string nada { get; set; }
+        public Nullable<decimal> AFP { get; set; }
+        public Nullable<decimal> ARS { get; set; }
+        public Nullable<decimal> ISR { get; set; }
+        public Nullable<decimal> SalarioNeto { get; set; }
+        public string TiempoLaborado { get; set; }
     
         public virtual Cargo Cargo { get; set; }
         public virtual Departamento Departamento { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PrestacionesLaborale> PrestacionesLaborales { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Nomina> Nominas { get; set; }
     }
 }

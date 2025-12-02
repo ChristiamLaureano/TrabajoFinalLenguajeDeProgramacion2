@@ -163,6 +163,7 @@
             this.Name = "frmDepartamentos";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "frmDepartamentos";
+            this.Load += new System.EventHandler(this.frmDepartamentos_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dvgDepartamentos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

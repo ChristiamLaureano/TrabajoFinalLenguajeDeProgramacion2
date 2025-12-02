@@ -14,7 +14,7 @@ namespace TrabajoFinal
     public partial class frmCargos : Form
     {
 
-        GestionDePersonalEntities db = new GestionDePersonalEntities();
+        GestionDePersonalEntities2 db = new GestionDePersonalEntities2();
 
         public frmCargos()
         {

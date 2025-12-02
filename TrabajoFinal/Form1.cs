@@ -76,5 +76,10 @@ namespace TrabajoFinal
         MessageBoxIcon.Information
         );
         }
+
+        private void FrmPrincipal_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

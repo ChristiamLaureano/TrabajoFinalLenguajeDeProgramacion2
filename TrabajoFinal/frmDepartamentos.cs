@@ -10,7 +10,7 @@ namespace TrabajoFinal
     {
      
         
-        GestionDePersonalEntities db = new GestionDePersonalEntities();
+        GestionDePersonalEntities2 db = new GestionDePersonalEntities2();
 
         public frmDepartamentos()
         {
@@ -173,6 +173,11 @@ namespace TrabajoFinal
 
                 MessageBox.Show("Exportado correctamente.");
             }
+        }
+
+        private void frmDepartamentos_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

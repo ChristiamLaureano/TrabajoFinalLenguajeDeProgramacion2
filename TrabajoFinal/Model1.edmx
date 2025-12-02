@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GestionDePersonalModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="GestionDePersonalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cargos">
           <Key>
             <PropertyRef Name="CargoID" />
@@ -36,6 +36,19 @@
           <Property Name="SalarioNeto" Type="decimal" Precision="13" Scale="2" StoreGeneratedPattern="Computed" />
           <Property Name="TiempoLaborado" Type="varchar" MaxLength="73" StoreGeneratedPattern="Computed" />
         </EntityType>
+        <EntityType Name="Nomina">
+          <Key>
+            <PropertyRef Name="NominaID" />
+          </Key>
+          <Property Name="NominaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpleadoID" Type="int" Nullable="false" />
+          <Property Name="FechaNomina" Type="date" Nullable="false" />
+          <Property Name="SalarioBase" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="AFP" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="ARS" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="ISR" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="SalarioNeto" Type="decimal" Precision="13" Scale="2" StoreGeneratedPattern="Computed" />
+        </EntityType>
         <EntityType Name="ParametrosSistema">
           <Key>
             <PropertyRef Name="ParametroID" />
@@ -44,6 +57,38 @@
           <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Valor" Type="decimal" Precision="10" Scale="4" Nullable="false" />
         </EntityType>
+        <EntityType Name="PrestacionesLaborales">
+          <Key>
+            <PropertyRef Name="PrestacionID" />
+          </Key>
+          <Property Name="PrestacionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpleadoID" Type="int" Nullable="false" />
+          <Property Name="TipoPrestacion" Type="varchar" MaxLength="50" />
+          <Property Name="Monto" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Fecha" Type="date" />
+        </EntityType>
+        <EntityType Name="Reclutamiento">
+          <Key>
+            <PropertyRef Name="AspiranteID" />
+          </Key>
+          <Property Name="AspiranteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+          <Property Name="Puesto" Type="varchar" MaxLength="100" />
+          <Property Name="FechaEntrevista" Type="date" />
+          <Property Name="Resultado" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Prestacio__Emple__5FB337D6">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+          <End Role="PrestacionesLaborales" Type="Self.PrestacionesLaborales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="EmpleadoID" />
+            </Principal>
+            <Dependent Role="PrestacionesLaborales">
+              <PropertyRef Name="EmpleadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Empleado_Cargo">
           <End Role="Cargos" Type="Self.Cargos" Multiplicity="1" />
           <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
@@ -68,11 +113,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="GestionDePersonalModel1StoreContainer">
+        <Association Name="FK_Nomina_Empleado">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+          <End Role="Nomina" Type="Self.Nomina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="EmpleadoID" />
+            </Principal>
+            <Dependent Role="Nomina">
+              <PropertyRef Name="EmpleadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GestionDePersonalModelStoreContainer">
           <EntitySet Name="Cargos" EntityType="Self.Cargos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nomina" EntityType="Self.Nomina" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ParametrosSistema" EntityType="Self.ParametrosSistema" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrestacionesLaborales" EntityType="Self.PrestacionesLaborales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reclutamiento" EntityType="Self.Reclutamiento" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Prestacio__Emple__5FB337D6" Association="Self.FK__Prestacio__Emple__5FB337D6">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="PrestacionesLaborales" EntitySet="PrestacionesLaborales" />
+          </AssociationSet>
           <AssociationSet Name="FK_Empleado_Cargo" Association="Self.FK_Empleado_Cargo">
             <End Role="Cargos" EntitySet="Cargos" />
             <End Role="Empleados" EntitySet="Empleados" />
@@ -81,12 +145,16 @@
             <End Role="Departamentos" EntitySet="Departamentos" />
             <End Role="Empleados" EntitySet="Empleados" />
           </AssociationSet>
+          <AssociationSet Name="FK_Nomina_Empleado" Association="Self.FK_Nomina_Empleado">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Nomina" EntitySet="Nomina" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="GestionDePersonalModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="GestionDePersonalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Cargo">
           <Key>
             <PropertyRef Name="CargoID" />
@@ -121,6 +189,22 @@
           <Property Name="TiempoLaborado" Type="String" MaxLength="73" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="Cargo" Relationship="Self.FK_Empleado_Cargo" FromRole="Empleados" ToRole="Cargos" />
           <NavigationProperty Name="Departamento" Relationship="Self.FK_Empleado_Departamento" FromRole="Empleados" ToRole="Departamentos" />
+          <NavigationProperty Name="PrestacionesLaborales" Relationship="Self.FK__Prestacio__Emple__5FB337D6" FromRole="Empleados" ToRole="PrestacionesLaborales" />
+          <NavigationProperty Name="Nominas" Relationship="Self.FK_Nomina_Empleado" FromRole="Empleados" ToRole="Nomina" />
+        </EntityType>
+        <EntityType Name="Nomina">
+          <Key>
+            <PropertyRef Name="NominaID" />
+          </Key>
+          <Property Name="NominaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpleadoID" Type="Int32" Nullable="false" />
+          <Property Name="FechaNomina" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SalarioBase" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="AFP" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="ARS" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="ISR" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="SalarioNeto" Type="Decimal" Precision="13" Scale="2" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK_Nomina_Empleado" FromRole="Nomina" ToRole="Empleados" />
         </EntityType>
         <EntityType Name="ParametrosSistema">
           <Key>
@@ -129,6 +213,27 @@
           <Property Name="ParametroID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Valor" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PrestacionesLaborale">
+          <Key>
+            <PropertyRef Name="PrestacionID" />
+          </Key>
+          <Property Name="PrestacionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpleadoID" Type="Int32" Nullable="false" />
+          <Property Name="TipoPrestacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Monto" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__Prestacio__Emple__5FB337D6" FromRole="PrestacionesLaborales" ToRole="Empleados" />
+        </EntityType>
+        <EntityType Name="Reclutamiento">
+          <Key>
+            <PropertyRef Name="AspiranteID" />
+          </Key>
+          <Property Name="AspiranteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Puesto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaEntrevista" Type="DateTime" Precision="0" />
+          <Property Name="Resultado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Empleado_Cargo">
           <End Role="Cargos" Type="Self.Cargo" Multiplicity="1" />
@@ -154,11 +259,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="GestionDePersonalEntities1" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK__Prestacio__Emple__5FB337D6">
+          <End Role="Empleados" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="PrestacionesLaborales" Type="Self.PrestacionesLaborale" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="EmpleadoID" />
+            </Principal>
+            <Dependent Role="PrestacionesLaborales">
+              <PropertyRef Name="EmpleadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nomina_Empleado">
+          <End Role="Empleados" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="Nomina" Type="Self.Nomina" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="EmpleadoID" />
+            </Principal>
+            <Dependent Role="Nomina">
+              <PropertyRef Name="EmpleadoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GestionDePersonalEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cargos" EntityType="Self.Cargo" />
           <EntitySet Name="Departamentos" EntityType="Self.Departamento" />
           <EntitySet Name="Empleados" EntityType="Self.Empleado" />
+          <EntitySet Name="Nominas" EntityType="Self.Nomina" />
           <EntitySet Name="ParametrosSistemas" EntityType="Self.ParametrosSistema" />
+          <EntitySet Name="PrestacionesLaborales" EntityType="Self.PrestacionesLaborale" />
+          <EntitySet Name="Reclutamientoes" EntityType="Self.Reclutamiento" />
           <AssociationSet Name="FK_Empleado_Cargo" Association="Self.FK_Empleado_Cargo">
             <End Role="Cargos" EntitySet="Cargos" />
             <End Role="Empleados" EntitySet="Empleados" />
@@ -167,15 +299,23 @@
             <End Role="Departamentos" EntitySet="Departamentos" />
             <End Role="Empleados" EntitySet="Empleados" />
           </AssociationSet>
+          <AssociationSet Name="FK__Prestacio__Emple__5FB337D6" Association="Self.FK__Prestacio__Emple__5FB337D6">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="PrestacionesLaborales" EntitySet="PrestacionesLaborales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nomina_Empleado" Association="Self.FK_Nomina_Empleado">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Nomina" EntitySet="Nominas" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="GestionDePersonalModel1StoreContainer" CdmEntityContainer="GestionDePersonalEntities1">
+        <EntityContainerMapping StorageEntityContainer="GestionDePersonalModelStoreContainer" CdmEntityContainer="GestionDePersonalEntities2">
           <EntitySetMapping Name="Cargos">
-            <EntityTypeMapping TypeName="GestionDePersonalModel1.Cargo">
+            <EntityTypeMapping TypeName="GestionDePersonalModel.Cargo">
               <MappingFragment StoreEntitySet="Cargos">
                 <ScalarProperty Name="CargoID" ColumnName="CargoID" />
                 <ScalarProperty Name="NombreCargo" ColumnName="NombreCargo" />
@@ -183,7 +323,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Departamentos">
-            <EntityTypeMapping TypeName="GestionDePersonalModel1.Departamento">
+            <EntityTypeMapping TypeName="GestionDePersonalModel.Departamento">
               <MappingFragment StoreEntitySet="Departamentos">
                 <ScalarProperty Name="DepartamentoID" ColumnName="DepartamentoID" />
                 <ScalarProperty Name="NombreDepartamento" ColumnName="NombreDepartamento" />
@@ -191,7 +331,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Empleados">
-            <EntityTypeMapping TypeName="GestionDePersonalModel1.Empleado">
+            <EntityTypeMapping TypeName="GestionDePersonalModel.Empleado">
               <MappingFragment StoreEntitySet="Empleados">
                 <ScalarProperty Name="EmpleadoID" ColumnName="EmpleadoID" />
                 <ScalarProperty Name="NombreEmpleado" ColumnName="NombreEmpleado" />
@@ -208,12 +348,48 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Nominas">
+            <EntityTypeMapping TypeName="GestionDePersonalModel.Nomina">
+              <MappingFragment StoreEntitySet="Nomina">
+                <ScalarProperty Name="NominaID" ColumnName="NominaID" />
+                <ScalarProperty Name="EmpleadoID" ColumnName="EmpleadoID" />
+                <ScalarProperty Name="FechaNomina" ColumnName="FechaNomina" />
+                <ScalarProperty Name="SalarioBase" ColumnName="SalarioBase" />
+                <ScalarProperty Name="AFP" ColumnName="AFP" />
+                <ScalarProperty Name="ARS" ColumnName="ARS" />
+                <ScalarProperty Name="ISR" ColumnName="ISR" />
+                <ScalarProperty Name="SalarioNeto" ColumnName="SalarioNeto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ParametrosSistemas">
-            <EntityTypeMapping TypeName="GestionDePersonalModel1.ParametrosSistema">
+            <EntityTypeMapping TypeName="GestionDePersonalModel.ParametrosSistema">
               <MappingFragment StoreEntitySet="ParametrosSistema">
                 <ScalarProperty Name="ParametroID" ColumnName="ParametroID" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Valor" ColumnName="Valor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrestacionesLaborales">
+            <EntityTypeMapping TypeName="GestionDePersonalModel.PrestacionesLaborale">
+              <MappingFragment StoreEntitySet="PrestacionesLaborales">
+                <ScalarProperty Name="PrestacionID" ColumnName="PrestacionID" />
+                <ScalarProperty Name="EmpleadoID" ColumnName="EmpleadoID" />
+                <ScalarProperty Name="TipoPrestacion" ColumnName="TipoPrestacion" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reclutamientoes">
+            <EntityTypeMapping TypeName="GestionDePersonalModel.Reclutamiento">
+              <MappingFragment StoreEntitySet="Reclutamiento">
+                <ScalarProperty Name="AspiranteID" ColumnName="AspiranteID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Puesto" ColumnName="Puesto" />
+                <ScalarProperty Name="FechaEntrevista" ColumnName="FechaEntrevista" />
+                <ScalarProperty Name="Resultado" ColumnName="Resultado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

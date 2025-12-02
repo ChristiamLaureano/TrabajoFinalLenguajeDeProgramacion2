@@ -4,13 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="aeccecf2dacf48fab25f122bf1e8fddb" Name="Diagram1">
-        <EntityTypeShape EntityType="GestionDePersonalModel1.Cargo" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionDePersonalModel1.Departamento" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionDePersonalModel1.Empleado" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionDePersonalModel1.ParametrosSistema" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="GestionDePersonalModel1.FK_Empleado_Cargo" ManuallyRouted="false" />
-        <AssociationConnector Association="GestionDePersonalModel1.FK_Empleado_Departamento" ManuallyRouted="false" />
+      <Diagram DiagramId="28d969afc9fb41ee9d2110441f05784c" Name="Diagram1">
+        <EntityTypeShape EntityType="GestionDePersonalModel.Cargo" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionDePersonalModel.Departamento" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionDePersonalModel.Empleado" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionDePersonalModel.Nomina" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionDePersonalModel.ParametrosSistema" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionDePersonalModel.PrestacionesLaborale" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionDePersonalModel.Reclutamiento" Width="1.5" PointX="7.75" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="GestionDePersonalModel.FK_Empleado_Cargo" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionDePersonalModel.FK_Empleado_Departamento" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionDePersonalModel.FK__Prestacio__Emple__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="GestionDePersonalModel.FK_Nomina_Empleado" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
