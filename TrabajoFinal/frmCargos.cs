@@ -249,5 +249,62 @@ namespace TrabajoFinal
             }
         }
 
+        private void AplicarEstilos()
+        {
+            this.BackColor = Color.WhiteSmoke;
+
+            foreach (Control c in this.Controls)
+            {
+                
+                if (c is Button btn)
+                {
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.BackColor = Color.FromArgb(52, 73, 94);  
+                    btn.ForeColor = Color.White;
+                    btn.FlatAppearance.BorderSize = 0;
+                    btn.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+                    btn.Height = 35;
+                    btn.Cursor = Cursors.Hand;
+                }
+
+                if (c is TextBox txt)
+                {
+                    txt.Font = new Font("Segoe UI", 10);
+                    txt.BorderStyle = BorderStyle.FixedSingle;
+                }
+
+                if (c is DataGridView dgv)
+                {
+                    dgv.EnableHeadersVisualStyles = false;
+                    dgv.BackgroundColor = Color.White;
+                    dgv.BorderStyle = BorderStyle.None;
+                    dgv.RowHeadersVisible = false;
+
+                    dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(52, 152, 219);
+                    dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                    dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+
+                    dgv.DefaultCellStyle.Font = new Font("Segoe UI", 9);
+                    dgv.DefaultCellStyle.SelectionBackColor = Color.LightSteelBlue;
+                    dgv.DefaultCellStyle.SelectionForeColor = Color.Black;
+                    dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                }
+
+                if (c is Label lbl)
+                {
+                    lbl.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+                    lbl.ForeColor = Color.DarkSlateGray;
+                }
+
+                if (c is ComboBox cbo)
+                {
+                    cbo.Font = new Font("Segoe UI", 10);
+                    cbo.FlatStyle = FlatStyle.Flat;
+                }
+            }
+        }
+
+
+
     }
 }
