@@ -19,7 +19,6 @@ namespace TrabajoFinal
         public frmCargos()
         {
             InitializeComponent();
-
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -33,13 +32,32 @@ namespace TrabajoFinal
         private void CargarDatos()
         {
             dgvCargos.DataSource = db.Cargos
-             .OrderBy(c => c.CargoID)
-             .Select(c => new 
-             {
-                 c.CargoID,
-                 c.NombreCargo
-             })
-             .ToList();
+                .OrderBy(c => c.CargoID)
+                .Select(c => new
+                {
+                    c.CargoID,
+                    c.NombreCargo
+                })
+                .ToList();
+        }
+
+        private void CargarEmpleadosPorCargo()
+        {
+            var consulta = db.Empleados
+                .GroupBy(e => e.CargoID)
+                .Select(g => new
+                {
+                    Cargo = db.Cargos
+                              .Where(c => c.CargoID == g.Key)
+                              .Select(c => c.NombreCargo)
+                              .FirstOrDefault(),
+
+                    CantidadEmpleados = g.Count()
+                })
+                .OrderByDescending(x => x.CantidadEmpleados)
+                .ToList();
+
+            dgvCargos.DataSource = consulta;
         }
 
         private void btnCargar_Click(object sender, EventArgs e)
@@ -53,7 +71,11 @@ namespace TrabajoFinal
             {
                 MessageBox.Show("Error al cargar datos: " + ex.Message);
             }
+        }
 
+        private void btnResumenPorCargo_Click(object sender, EventArgs e)
+        {
+            CargarEmpleadosPorCargo();
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -124,81 +146,7 @@ namespace TrabajoFinal
             }
         }
 
-        private void dgvCargos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow fila = dgvCargos.Rows[e.RowIndex];
-
-                txtID.Text = fila.Cells["CargoID"].Value.ToString();
-                txtNombreCargo.Text = fila.Cells["NombreCargo"].Value.ToString();
-            }
-        }
-
-        private void btnLimpiar_Click(object sender, EventArgs e)
-        {
-            Limpiar();
-        }
-
-        private void Limpiar()
-        {
-            txtID.Clear();
-            txtNombreCargo.Clear();
-            txtNombreCargo.Focus();
-        }
-
-        private void btnExportarCSV_Click(object sender, EventArgs e)
-        {
-            if (dgvCargos.Rows.Count == 0)
-            {
-                MessageBox.Show("No hay datos para exportar");
-                return;
-            }
-
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "Archivo CSV (*.csv)|*.csv";
-            sfd.FileName = "Cargos.csv";
-
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    using (StreamWriter sw = new StreamWriter(sfd.FileName))
-                    {
-                        // ENCABEZADOS
-                        for (int i = 0; i < dgvCargos.Columns.Count; i++)
-                        {
-                            sw.Write(dgvCargos.Columns[i].HeaderText);
-                            if (i < dgvCargos.Columns.Count - 1)
-                                sw.Write(",");
-                        }
-                        sw.WriteLine();
-
-                        // DATOS
-                        foreach (DataGridViewRow fila in dgvCargos.Rows)
-                        {
-                            if (!fila.IsNewRow)
-                            {
-                                for (int i = 0; i < dgvCargos.Columns.Count; i++)
-                                {
-                                    sw.Write(fila.Cells[i].Value?.ToString());
-                                    if (i < dgvCargos.Columns.Count - 1)
-                                        sw.Write(",");
-                                }
-                                sw.WriteLine();
-                            }
-                        }
-                    }
-
-                    MessageBox.Show("Archivo exportado correctamente ✅");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al exportar: " + ex.Message);
-                }
-            }
-        }
-
+       
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNombreCargo.Text))
@@ -226,5 +174,80 @@ namespace TrabajoFinal
                 MessageBox.Show("Error al guardar: " + ex.Message);
             }
         }
+
+        private void dgvCargos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && dgvCargos.Columns.Contains("CargoID"))
+            {
+                DataGridViewRow fila = dgvCargos.Rows[e.RowIndex];
+
+                txtID.Text = fila.Cells["CargoID"].Value.ToString();
+                txtNombreCargo.Text = fila.Cells["NombreCargo"].Value.ToString();
+            }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
+
+        private void Limpiar()
+        {
+            txtID.Clear();
+            txtNombreCargo.Clear();
+            txtNombreCargo.Focus();
+        }
+
+        // ================= EXPORT CSV =================
+        private void btnExportarCSV_Click(object sender, EventArgs e)
+        {
+            if (dgvCargos.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay datos para exportar");
+                return;
+            }
+
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Archivo CSV (*.csv)|*.csv";
+            sfd.FileName = "Cargos.csv";
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    using (StreamWriter sw = new StreamWriter(sfd.FileName))
+                    {
+                        for (int i = 0; i < dgvCargos.Columns.Count; i++)
+                        {
+                            sw.Write(dgvCargos.Columns[i].HeaderText);
+                            if (i < dgvCargos.Columns.Count - 1)
+                                sw.Write(",");
+                        }
+                        sw.WriteLine();
+
+                        foreach (DataGridViewRow fila in dgvCargos.Rows)
+                        {
+                            if (!fila.IsNewRow)
+                            {
+                                for (int i = 0; i < dgvCargos.Columns.Count; i++)
+                                {
+                                    sw.Write(fila.Cells[i].Value?.ToString());
+                                    if (i < dgvCargos.Columns.Count - 1)
+                                        sw.Write(",");
+                                }
+                                sw.WriteLine();
+                            }
+                        }
+                    }
+
+                    MessageBox.Show("Archivo exportado correctamente ✅");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al exportar: " + ex.Message);
+                }
+            }
+        }
+
     }
 }

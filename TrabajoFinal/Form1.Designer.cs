@@ -30,10 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.gestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nominaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.prestacionesLaboralesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reclutamientoYSeleccionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.departamenoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,7 +40,6 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gestionToolStripMenuItem,
             this.departamenoToolStripMenuItem,
             this.cargosToolStripMenuItem,
             this.empleadosToolStripMenuItem,
@@ -54,34 +49,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // gestionToolStripMenuItem
-            // 
-            this.gestionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nominaToolStripMenuItem,
-            this.prestacionesLaboralesToolStripMenuItem,
-            this.reclutamientoYSeleccionToolStripMenuItem});
-            this.gestionToolStripMenuItem.Name = "gestionToolStripMenuItem";
-            this.gestionToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.gestionToolStripMenuItem.Text = "Gestion";
-            // 
-            // nominaToolStripMenuItem
-            // 
-            this.nominaToolStripMenuItem.Name = "nominaToolStripMenuItem";
-            this.nominaToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.nominaToolStripMenuItem.Text = "Nomina ";
-            // 
-            // prestacionesLaboralesToolStripMenuItem
-            // 
-            this.prestacionesLaboralesToolStripMenuItem.Name = "prestacionesLaboralesToolStripMenuItem";
-            this.prestacionesLaboralesToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.prestacionesLaboralesToolStripMenuItem.Text = "Prestaciones Laborales";
-            // 
-            // reclutamientoYSeleccionToolStripMenuItem
-            // 
-            this.reclutamientoYSeleccionToolStripMenuItem.Name = "reclutamientoYSeleccionToolStripMenuItem";
-            this.reclutamientoYSeleccionToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.reclutamientoYSeleccionToolStripMenuItem.Text = "Reclutamiento y Seleccion";
             // 
             // departamenoToolStripMenuItem
             // 
@@ -137,14 +104,10 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem gestionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem departamenoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cargosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem empleadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem nominaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem prestacionesLaboralesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reclutamientoYSeleccionToolStripMenuItem;
     }
 }
 

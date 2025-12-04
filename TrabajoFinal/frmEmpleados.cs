@@ -116,10 +116,10 @@ namespace TrabajoFinal
                 }
 
                 DialogResult r = MessageBox.Show(
-                 "¿Desea guardar este empleado con estos descuentos?\n\n" +
-                 $"AFP: {txtAFP.Text}\n" +
-                 $"ARS: {txtARS.Text}\n" +
-                 $"ISR: {txtISR.Text}\n" +
+                 "¿Desea guardar este empleado con estos descuentos?" +
+                 $"AFP: {txtAFP.Text}" +
+                 $"ARS: {txtARS.Text}" +
+                 $"ISR: {txtISR.Text}" +
                  $"Neto: {txtNeto.Text}",
                  "Confirmación",
                  MessageBoxButtons.YesNo,
@@ -344,7 +344,7 @@ namespace TrabajoFinal
 
             StringBuilder contenido = new StringBuilder();
 
-            // Encabezados
+            
             for (int i = 0; i < dgvEmpleados.Columns.Count; i++)
             {
                 contenido.Append(dgvEmpleados.Columns[i].HeaderText);
@@ -353,7 +353,7 @@ namespace TrabajoFinal
             }
             contenido.AppendLine();
 
-            // Filas
+            
             foreach (DataGridViewRow fila in dgvEmpleados.Rows)
             {
                 if (!fila.IsNewRow)

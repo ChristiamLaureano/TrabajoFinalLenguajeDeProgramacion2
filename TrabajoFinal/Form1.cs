@@ -61,16 +61,16 @@ namespace TrabajoFinal
         private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show(
-        "Sistema de Gestión de Recursos Humanos\n" +
-        "Versión 1.0\n\n" +
-        "Proyecto Final Lenguaje de Programación II\n" +
-        "Desarrollado por Christiam\n\n" +
-        "Funciones:\n" +
-        "- Gestión de empleados\n" +
-        "- Nómina\n" +
-        "- Exportación CSV\n" +
-        "- Control de departamentos\n" +
-        "- Control de cargos\n",
+        "Sistema de Gestión de Recursos Humanos" +
+        "Versión 1.0" +
+        "Proyecto Final Lenguaje de Programación II" +
+        "Desarrollado por Christiam" +
+        "Funciones:" +
+        "- Gestión de empleados" +
+        "- Nómina" +
+        "- Exportación CSV" +
+        "- Control de departamentos" +
+        "- Control de cargos",
         "Acerca de",
         MessageBoxButtons.OK,
         MessageBoxIcon.Information
@@ -79,7 +79,9 @@ namespace TrabajoFinal
 
         private void FrmPrincipal_Load_1(object sender, EventArgs e)
         {
-
+            
         }
+
+       
     }
 }
