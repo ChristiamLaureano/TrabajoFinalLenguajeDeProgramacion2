@@ -64,7 +64,7 @@ namespace TrabajoFinal
         "Sistema de Gestión de Recursos Humanos" +
         "Versión 1.0" +
         "Proyecto Final Lenguaje de Programación II" +
-        "Desarrollado por Christiam" +
+        "Desarrollado por Christiam  LR-2024-00500" +
         "Funciones:" +
         "- Gestión de empleados" +
         "- Nómina" +

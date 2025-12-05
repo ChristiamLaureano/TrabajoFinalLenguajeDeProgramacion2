@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="GestionDePersonalModel.Departamento" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GestionDePersonalModel.Empleado" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="GestionDePersonalModel.Nomina" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GestionDePersonalModel.ParametrosSistema" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GestionDePersonalModel.ParametrosSistema" Width="1.5" PointX="7.875" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="GestionDePersonalModel.PrestacionesLaborale" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="GestionDePersonalModel.Reclutamiento" Width="1.5" PointX="7.75" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="GestionDePersonalModel.FK_Empleado_Cargo" ManuallyRouted="false" />
